@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend><h3>Sistema de Gestão Acadêmica</h3></legend>
+
+            <h3>Manutenção de Usuários do Sistema Interno</h3>
+
+            <label for="login">Login:</label><br>
+            <input type="text" id="login" name="login"><br>
+            <label for="senha">Senha:</label><br>
+            <input type="text" id="senha" name="senha"><br>
+            <br>
+
+            <label for="status">Status:</label><br>
+            <select name="status" id="status">
+                <option value="manhã">Ativo</option><br>
+                <option value="tarde">Inativo</option><br>
+            </select>
+            <br>
+            
+            <br><label for="tipo">Tipo:</label><br>
+            <input type="radio" id="tec" name="tipo" value="Técnico">
+            <label for="tec">Técnico</label>
+            <input type="radio" id="prof" name="tipo" value="Professor">
+            <label for="prof">Professor</label>
+            <input type="radio" id="aluno" name="tipo" value="Aluno">
+            <label for="aluno">Aluno</label><br>
+
+            <br><label for="date">Data Criação:</label><br>
+            <input type="date">    
+            <br>
+
+            <br><label for="perfil">Perfil:</label><br>
+            <input type="radio" id="conv" name="tipo" value="Convidado">
+            <label for="conv">Convidado</label>
+            <input type="radio" id="admin" name="tipo" value="Administrador">
+            <label for="admin">Administrador</label>
+            <br>
+
+            <br><label for="obs">Observações:</label><br>
+            <textarea id="obs" name="obs" rows="10" cols="50"></textarea>
+            <br>
+
+            <br><label for="mod">Módulos:</label><br>
+            <input type="checkbox" id="compras" name="mod1" value="Compras">
+            <label for="compras">Compras</label>
+            <input type="checkbox" id="biblioteca" name="mod2" value="Biblioteca">
+            <label for="biblioteca">Biblioteca</label>
+            <input type="checkbox" id="academico" name="mod3" value="Acadêmico">
+            <label for="academico">Acadêmico</label>
+            <input type="checkbox" id="doc" name="mod4" value="Documentação">
+            <label for="doc">Documentação</label>
+            <input type="checkbox" id="rh" name="mod5" value="Recursos Humanos">
+            <label for="rh">Recursos Humanos</label><br>
+            <br>
+            
+            <input type="submit">
+        </fieldset>
+    </form>
+</body>
+</html>

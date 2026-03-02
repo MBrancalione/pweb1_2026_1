@@ -15,7 +15,8 @@
             <label for="sobrenome">Sobrenome:</label><br>
             <input type="text" if="sobrenome" name="sobrenome"><br>
             <br>
-            <p>Curso:</p>
+
+            <label for="curso">Curso:</label><br>
             <input type="radio" id="ti" name="curso" value="Técnico em Informática">
             <label for="ti">Técnico em Informática</label><br>
             <input type="radio" id="sistemas" name="curso" value="Análise e Desenvolvimento de Sistemas">
@@ -23,7 +24,8 @@
             <input type="radio" id="pweb" name="curso" value="Programação WEB I">
             <label for="pweb">Programação WEB I</label><br>
             <br>
-            <p>Linguagens de Programação:</p>
+
+            <label for="ling">Linguagens de Programação:</label><br>
             <input type="checkbox" id="php" name="ling1" value="PHP">
             <label for="php">PHP</label><br>
             <input type="checkbox" id="java" name="ling2" value="Java">
@@ -31,6 +33,7 @@
             <input type="checkbox" id="python" name="ling3" value="Python">
             <label for="python">Python</label><br>
             <br>
+
             <!--Lista suspensa, onde option define as opções disponíveis na lista-->
             <label for="turnos">Escolha um Turno:</label><br>
             <select name="turnos" id="turnos">
@@ -39,6 +42,7 @@
                 <option value="noite">Noite</option><br>
             </select>
             <br>
+
             <!--Datalist fornece o autocompletar-->
             <br><label for="unidade">Escolha o Campus:</label><br>
             <input list="unidades" name="unidade" id="unidade"><br>
@@ -51,6 +55,7 @@
                 <option value="São Miguel do Oeste">São Miguel do Oeste</option>
             </datalist>
             <br>
+            
             <input type="submit">
         </fieldset>
     </form>
