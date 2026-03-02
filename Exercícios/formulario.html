@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Formulário 01</legend>
+            <br>
+            <label for="prinome">Primeiro Nome:</label><br>
+            <input type="text" if="prinome" name="prinome"><br>
+            <label for="sobrenome">Sobrenome:</label><br>
+            <input type="text" if="sobrenome" name="sobrenome"><br>
+            <br>
+            <p>Curso:</p>
+            <input type="radio" id="ti" name="curso" value="Técnico em Informática">
+            <label for="ti">Técnico em Informática</label><br>
+            <input type="radio" id="sistemas" name="curso" value="Análise e Desenvolvimento de Sistemas">
+            <label for="sistemas">Análise e Desenvolvimento de Sistemas</label><br>
+            <input type="radio" id="pweb" name="curso" value="Programação WEB I">
+            <label for="pweb">Programação WEB I</label><br>
+            <br>
+            <p>Linguagens de Programação:</p>
+            <input type="checkbox" id="php" name="ling1" value="PHP">
+            <label for="php">PHP</label><br>
+            <input type="checkbox" id="java" name="ling2" value="Java">
+            <label for="java">Java</label><br>
+            <input type="checkbox" id="python" name="ling3" value="Python">
+            <label for="python">Python</label><br>
+            <br>
+            <!--Lista suspensa, onde option define as opções disponíveis na lista-->
+            <label for="turnos">Escolha um Turno:</label><br>
+            <select name="turnos" id="turnos">
+                <option value="manhã">Manhã</option><br>
+                <option value="tarde">Tarde</option><br>
+                <option value="noite">Noite</option><br>
+            </select>
+            <br>
+            <!--Datalist fornece o autocompletar-->
+            <br><label for="unidade">Escolha o Campus:</label><br>
+            <input list="unidades" name="unidade" id="unidade"><br>
+
+            <!--lista posterior-->
+            <datalist id="unidades">
+                <option value="Chapecó">Chapecó</option>
+                <option value="Xanxerê">Xanxerê</option>
+                <option value="São Carlos">São Carlos</option>
+                <option value="São Miguel do Oeste">São Miguel do Oeste</option>
+            </datalist>
+            <br>
+            <input type="submit">
+        </fieldset>
+    </form>
+</body>
+</html>
