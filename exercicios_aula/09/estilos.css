@@ -1,0 +1,63 @@
+/* todo o conteúdo será formatado assim */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    background-color: bisque;
+    color: black;
+}
+header{
+    background-color: #794141;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+nav{
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+}
+nav ul{
+    list-style-type: none;
+    display: flex; /*flex box - proporções*/
+    justify-content: center;
+    gap: 30px; /*espaços entre os menus*/
+}
+nav ul li{
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover{
+    text-decoration: underline;
+    color: #333;
+}
+div{
+    display: flex;
+    min-height: calc(100vh - 180px);
+}
+aside{
+    background-color: aquamarine;
+    width: 20%;
+    padding: 20px;
+    color: black;
+}
+main{
+    background-color: white;
+    width: 60%;
+    padding: 20px;
+}
+footer{
+    background-color: aquamarine;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+h1{
+    font-size: 30px;
+
+}
