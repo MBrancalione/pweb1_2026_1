@@ -1,0 +1,61 @@
+<!-- Exercício 02 -->
+ <!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Cadastral</title>
+    <meta name="author" content="Maria Brancalione">
+
+</head>
+ <body>
+    <h2 align="center">Ficha Cadastral</h2>
+    <font face="Arial, Helvetica, sans-serif" size="2px">
+    <table align="center" width="500px">
+      <form action="./exercicio02.html">
+         <tr>
+         <td><label for="nome">Nome:</label></td>
+         <td colspan="3"><input type="text" id="nome" name="nome" maxlength="55" size="55"><br></td> <!--colspan é tipo mesclar e misturar do excel, faz com que ocupe mais três células da tabela-->
+         </tr>
+
+         <tr>
+         <td><label for="rg">RG:</label></td>
+         <td><input type="text" id="rg" name="rg" maxlength="13" size="13" ></td>
+         <td><label for="cpf">C.P.F.:</label></td>
+         <td><input type="text" id="cpf" name="cpf" maxlength="13" size="13"><br></td>
+         </tr>
+
+         <tr>
+         <td><label for="endereço">Endereço:</label></td>
+         <td colspan="3"><input type="text" id="endereço" name="endereço" maxlength="55" size="55"><br></td>
+         </tr>
+
+         <tr>
+         <td><label for="sexo">Sexo:</label></td>
+         <td>
+         <select name="sexo" id="sexo">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option><br>
+         </select></td>
+         <td><label for="nascimento">Data de Nascimento</label></td>
+         <td><input type="date" id="nascimento" name="nascimento"><br></td>
+         </tr>
+
+         <tr>
+         <td><label for="Situação Civil">Situação Civil:</label></td>
+         <td><input type="radio" id="solteiro" name="solteiro" value="Solteiro(a)">
+         <label for="solteiro">Solteiro(a)</label></td>
+         <td><input type="radio" id="casado" name="casado" value="Casado(a)">
+         <label for="casado">Casado(a)</label></td>
+         <td><input type="radio" id="viuvo" name="viuvo" value="Viúvo(a)">
+         <label for="viuvo">Viúvo(a)</label></td>
+         </tr>
+
+         <tr align="center">
+         <td colspan="4"><input type="submit" value="Limpar Dados"></td>
+         </tr>
+      </form>
+    </table>
+    </font>
+ </body>
+ </html>
