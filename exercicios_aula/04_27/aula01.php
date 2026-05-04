@@ -44,10 +44,29 @@
         //vetores associativos
         $carro = ['modelo' => "mustang", 'cor' => "preto"];
         echo $carro['modelo']. " - " .$carro['cor'];
+
+        //matrizes
+        $carros = [
+            ['modelo' => "mustang", 'cor' => "preto"],
+            ['modelo' => "camaro", 'cor' => "amarelo"]
+        ];
+
+    //para nao precisar criar um for dentro de outro, podemos usar o foreach para percorrer a matriz, e dentro do foreach, criar um for para percorrer o vetor associativo.
+        foreach($carros as $indice => $carro){
+            echo $indice + 1;
+            echo "Modelo: " . $carro['modelo'] . " - Cor: " . $carro['cor'] . "<br>";
+        }
+
+        //metodo post é enviado diretamente para o servidor, e o metodo get é enviado para a url, e pode ser visto por qualquer pessoa, e tem um limite de caracteres.
+        //variaveis globais são variaveis que podem ser acessadas em qualquer parte do código, nativas do php, e variaveis locais são variaveis que só podem ser acessadas dentro de uma função ou bloco de código.
     ?>
 
+
     <p>Meu site sobre <?= $carro['modelo']. " - " .$carro['cor'] ?></p>
+
     <?php 
     include "./aula02.php";?>
+
+     
 </body>
 </html> 
