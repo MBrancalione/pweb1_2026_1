@@ -1,5 +1,5 @@
 <?php
-include "./header.php";
+include "../header.php";
 include_once '../database/db.class.php';
 
 $db = new db('usuario');
@@ -26,13 +26,10 @@ if  (!empty($_POST)) {
         <label for="telefone" class="form-label">Telefone</label>
         <input type="tel" class="form-control" id="telefone" name="telefone">
     </div>
-    <div class="col-6">
-        <label for="senha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="senha" name="senha">
-    <div class="mt-2">
+        <div class="mt-2">
         <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 </form>
 <?php
-include "./footer.php";
+include "../footer.php";
 ?>
