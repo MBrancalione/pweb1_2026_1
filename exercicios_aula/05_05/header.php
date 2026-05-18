@@ -21,7 +21,19 @@
     />
 
   </head>
-  
+  <?php
+    function redirect($page, $time = 1500){
+                  echo "<script>setTimeout(()=>window.location.href='$page', '$time')</script>";
+    }
+    function actionMessage($success, $error){
+        if(!empty($success)){
+            echo "<div class='alert alert-success' role='alert'>$success</div>";
+        }
+        if(!empty($error)){
+            echo "<div class='alert alert-danger' role='alert'>$error</div>";
+        }
+    }
+  ?>
   <body>
     <div class="container">
         <div class="row">

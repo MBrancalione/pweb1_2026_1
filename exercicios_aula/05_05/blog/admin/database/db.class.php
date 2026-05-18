@@ -33,6 +33,14 @@ class db {
         }
     }
 
+    public function getAll()
+    {
+        $sql = "SELECT * FROM $this->table_name";
+        $st = $this->conn->prepare($sql);
+        $st->execute();
+        
+    }
+
     //INSERT INTO `tabela` (`campo1`, `campo2`) VALUES ('?', '?', '?');
     public function store($dados){
 
