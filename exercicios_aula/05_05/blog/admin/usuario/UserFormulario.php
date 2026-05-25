@@ -27,6 +27,13 @@ if (!empty($_POST)) {
         }
 
         if (empty($errors)) {
+            if(empty($_POST['id'])) {
+                $db->store($_POST);
+                $success = "Registro Salvo com sucesso!";
+            } else {
+                $db->update($_POST, $_POST['id']);
+                $success = "Registro atualizado com sucesso!";
+            }
             $db->store($_POST);
             $success = "Registro Salvo com sucesso!";
 
