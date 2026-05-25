@@ -11,6 +11,7 @@ class db
     private $table_name;
     private $conn; // conexão fica guardada para reutilizar
 
+
     public function __construct($table_name)
     {
         $this->table_name = $table_name;
@@ -44,6 +45,38 @@ class db
         return $st->fetchAll(PDO::FETCH_CLASS);
     }
 
+        //função delete no banco
+    public function destroi($id)
+    {
+        try{
+            $sql = "DELETE FROM $this->table_name WHERE id = ?";
+            $st = $this->conn->prepare($sql);
+            $st->execute([$id]);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao deletar: ", $e->getMessage());
+        }
+    }
+
+    public function search($dados)
+    {
+        $campo = $dados['tipo'];
+        $valor = $dados['valor'];
+        $sql = "SELECT * FROM $this->table_name WHERE $campo LIKE ?";
+        $st = $this->conn->prepare($sql);
+        $st->execute(["%$valor%"]);
+
+        return $st->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function find($id)
+    {
+        $sql = "SELECT * FROM $this->table_name WHERE id=?";
+        $st = $this->conn->prepare($sql);
+        $st->execute([$id]);
+
+        return $st->fetchObject();
+    }
+
     //INSERT INTO tabela ('campo1', 'campo2') VALUES (?, ?);
     public function store($dados)
     {
@@ -53,11 +86,12 @@ class db
         $sep = "";
 
         foreach ($dados as $campo => $valor) {
-            $campos .= $sep . $campo;
-            $marcadores .= $sep . "?";
-            $vetorData[] = $valor;
-            $sep = ",";
+            $campos .= $sep . $campo; //campo1, campo2, campo3
+            $marcadores .= $sep . "?"; //?, ?, ?
+            $vetorData[] = $valor; //guarda os valores em um vetor para passar no execute
+            $sep = ","; //após a primeira iteração, passa a ser ", " para separar os campos e marcadores
         }
+                //concatenação dos dados que vem do banco para inserir no insert
         $sql = "INSERT INTO $this->table_name ($campos) VALUES ($marcadores);";
 
         //codigo para debugar algum erro
