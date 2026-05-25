@@ -1,56 +1,68 @@
 <?php
-include "../header.php";
-include_once '../database/db.class.php';
+include '../header.php';
+include_once "../database/db.class.php";
 
 $db = new db('usuario');
-$success = "";
-$error = "";
-if  (!empty($_POST)) {
-    //var_dump($_POST);
-    //exit; //método de saída para ver os dados so objeto
-    try {
-        $db->store($_POST);
-        $success = "Dados inseridos com sucesso!";
-        redirect('UserList.php');
+$success = '';
+$actionError = '';
+$errors = [];
 
+if (!empty($_POST)) {
+    // var_dump($_POST);
+    //exit;
+    try {
+
+        if (empty($_POST['nome'])) {
+            $errors[] = "<li>O nome é obrigatório</li>";
+        }
+
+        if (empty($_POST['email'])) {
+            $errors[] = "<li>O email é obrigatório</li>";
+        }
+
+        if (empty($errors)) {
+            $db->store($_POST);
+            $success = "Registro Salvo com sucesso!";
+
+            redirect('./UsuarioList.php');
+        }
     } catch (PDOException $e) {
-        $error = "Erro ao inserir dados: " . $e->getMessage();
+        $actionError = $e->getMessage();
+    } catch (Exception $e) {
+        $actionError = $e->getMessage();
     }
-    /*$conn = new db('usuario');
-    $conn->store($_POST);
-    echo "Dados inseridos com sucesso!";*/
 }
+
 ?>
 
 <div class="row">
-    <?php actionMessage($success, $error); ?>
+    <?php actionMessage($success, $actionError) ?>
+    <?php showValidationError($errors) ?>
 
-
-
-<form action="Userformulario.php" method="post">
-    <h3>Formulário do Usuário</h3>
-    <div class="col-6">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome">
-    </div>
-    <div class="col-6">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email">
-    </div>
-    <div class="col-6">
-        <label for="telefone" class="form-label">Telefone</label>
-        <input type="tel" class="form-control" id="telefone" name="telefone">
-    </div>
-        <div class="mt-2">
-        <button type="submit" class="btn btn-success">Enviar</button>
-            <div class="row">
-        <div class="col">
-            <a href="UserList.php" class="btn btn-primary">Voltar</a>
+    <form action="UsuarioForm.php" method="post">
+        <h3>Formulário Usuário</h3>
+        <div class="col-6">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" class="form-control" value="<?php echo getFormValue('nome'); ?>">
         </div>
-    </div>
-    </div>
-</form>
+        <div class="col-6">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" value="<?php echo getFormValue('email'); ?>">
+        </div>
+        <div class="col-6">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" class="form-control" value="<?php echo getFormValue('telefone'); ?>">
+        </div>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="./UsuarioList.php" class="btn btn-primary"> Voltar</a>
+        </div>
+
+
+    </form>
+
 </div>
+
 <?php
-include "../footer.php";
+include '../footer.php';
 ?>

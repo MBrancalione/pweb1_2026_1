@@ -1,6 +1,7 @@
 <?php
 
-class db {
+class db
+{
 
     private $host     = 'localhost';
     private $user     = 'root';
@@ -33,43 +34,40 @@ class db {
         }
     }
 
-    public function getAll()
+    //SELECT * FROM tabela
+    public function all()
     {
         $sql = "SELECT * FROM $this->table_name";
         $st = $this->conn->prepare($sql);
         $st->execute();
-        
+
+        return $st->fetchAll(PDO::FETCH_CLASS);
     }
 
-    //INSERT INTO `tabela` (`campo1`, `campo2`) VALUES ('?', '?', '?');
-    public function store($dados){
-
-    
-
-        $campos = ""; //oncatenas os camps do formulário
-        $marcadores = ""; //concatenas as interrogações, valores
+    //INSERT INTO tabela ('campo1', 'campo2') VALUES (?, ?);
+    public function store($dados)
+    {
+        $campos = "";
+        $marcadores = "";
         $vetorData = [];
         $sep = "";
 
-        foreach($dados as $campo => $valor){
-            $campos .= $sep . $campo; //campo1, campo2
-            $marcadores .= $sep . "?"; //?, ?, ?
-            $vetorData[] = $valor; //guarda os valores em um vetor para passar no execute
-            $sep = ", "; //após a primeira iteração, passa a ser ", " para separar os campos e marcadores
+        foreach ($dados as $campo => $valor) {
+            $campos .= $sep . $campo;
+            $marcadores .= $sep . "?";
+            $vetorData[] = $valor;
+            $sep = ",";
         }
-        //concatenação dos dados que vem do banco para inserir no insert
-        $sql = "INSERT INTO $this->table_name ($campos) VALUES ($marcadores)";
-        try{
-            $st = $this->conn->prepare($sql); //prepara a query
-            $st->execute($vetorData); //executa a query passando os valores do vetor
-        }catch(PDOException $e){
-            var_dump('Erro na inserção: ' . $e->getMessage());
+        $sql = "INSERT INTO $this->table_name ($campos) VALUES ($marcadores);";
+
+        //codigo para debugar algum erro
+        // var_dump($sql, $dados);
+        // exit;
+        try {
+            $st = $this->conn->prepare($sql);
+            $st->execute($vetorData);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao inserir: ", $e->getMessage());
         }
-
-        
-        
-        
-
-
     }
 }
