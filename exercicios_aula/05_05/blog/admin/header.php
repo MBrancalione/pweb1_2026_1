@@ -15,6 +15,10 @@
 </head>
 <?php
 
+if(session_status() == PHP_SESSION_NONE) { //se a sessão não tiver sido iniciada (none), inicia a sessão
+        session_start();
+    }
+
 function redirect($page, $time = 1500)
 {
     echo "<script>

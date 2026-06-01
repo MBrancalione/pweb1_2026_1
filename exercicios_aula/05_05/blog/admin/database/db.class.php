@@ -77,6 +77,16 @@ class db
         return $st->fetchObject();
     }
 
+        //fazer checagem de email e senha no banco de dados na tela de login
+    public function findBy($campo, $valor)
+    {
+        $sql = "SELECT * FROM $this->table_name WHERE $campo = ?";
+        $st = $this->conn->prepare($sql);
+        $st->execute([$valor]);
+
+        return $st->fetchObject();
+    }
+
     //INSERT INTO tabela ('campo1', 'campo2') VALUES (?, ?);
     public function store($dados)
     {
@@ -102,6 +112,32 @@ class db
             $st->execute($vetorData);
         } catch (PDOException $e) {
             throw new Exception("Erro ao inserir: ", $e->getMessage());
+        }
+    }
+
+
+    public function update($dados)
+    {
+        $campos = "";
+        $marcadores = "";
+        $vetorData = [];
+        $sep = "";
+
+        foreach ($dados as $campo => $valor) {
+            if($campo !== 'id') {
+            $campos .= $sep . " $campo = ?"; //?, ?, ?
+            $vetorData[] = $valor; //guarda os valores em um vetor para passar no execute
+            $sep = ", "; //após a primeira iteração, passa a ser ", " para separar os campos e marcadores
+        }}
+        $vetorData[] = $dados['id']; //adiciona o id no final do vetor para passar no execute
+                //concatenação dos dados que vem do banco para inserir no insert
+        $sql = "UPDATE $this->table_name SET $campos WHERE id = ?";
+
+        try {
+            $st = $this->conn->prepare($sql);
+            $st->execute($vetorData);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao atualizar: ", $e->getMessage());
         }
     }
 }
