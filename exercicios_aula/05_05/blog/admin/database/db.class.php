@@ -53,7 +53,7 @@ class db
             $st = $this->conn->prepare($sql);
             $st->execute([$id]);
         } catch (PDOException $e) {
-            throw new Exception("Erro ao deletar: ", $e->getMessage());
+            throw new Exception("Erro ao deletar: ". $e->getMessage());
         }
     }
 
@@ -111,7 +111,7 @@ class db
             $st = $this->conn->prepare($sql);
             $st->execute($vetorData);
         } catch (PDOException $e) {
-            throw new Exception("Erro ao inserir: ", $e->getMessage());
+            throw new Exception("Erro ao inserir: ". $e->getMessage());
         }
     }
 
@@ -137,7 +137,7 @@ class db
             $st = $this->conn->prepare($sql);
             $st->execute($vetorData);
         } catch (PDOException $e) {
-            throw new Exception("Erro ao atualizar: ", $e->getMessage());
+            throw new Exception("Erro ao atualizar: ". $e->getMessage());
         }
     }
 }
