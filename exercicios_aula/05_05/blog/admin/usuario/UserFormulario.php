@@ -6,6 +6,8 @@ $db = new db('usuario');
 $success = '';
 $actionError = '';
 $errors = [];
+$data = '';
+
 
 if(!empty($_GET['id'])) {
     $data = $db->find($_GET['id']);
@@ -28,6 +30,9 @@ if (!empty($_POST)) {
 
         if (empty($errors)) {
             if(empty($_POST['id'])) {
+                //o código está enviando um id vazio para o banco, se não existir um id, ele deve ser retirado, para que então seja possível ao banco inserir automaticamente
+                unset($_POST['id']);
+
                 $db->store($_POST);
                 $success = "Registro Salvo com sucesso!";
             } else {
@@ -37,7 +42,7 @@ if (!empty($_POST)) {
             $db->store($_POST);
             $success = "Registro Salvo com sucesso!";
 
-            redirect('./UsuarioList.php');
+            redirect('UserList.php');
         }
     } catch (PDOException $e) {
         $actionError = $e->getMessage();
@@ -54,10 +59,12 @@ if (!empty($_POST)) {
 
     <form action="./UserFormulario.php" method="post">
         <h3>Formulário Usuário</h3>
+
         <input type="hidden" name="id" value="<?php echo isset($data->id) ? $data->id : ''; ?>"> 
+
         <div class="col-6">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" class="form-control" value="<?php echo getFormValue($data, 'id'); ?>">
+            <input type="text" name="nome" class="form-control" value="<?php echo getFormValue($data, 'nome'); ?>">
         </div>
         <div class="col-6">
             <label for="email">Email</label>
@@ -69,7 +76,7 @@ if (!empty($_POST)) {
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="./UserList.php" class="btn btn-primary"> Voltar</a>
+            <a href="UserList.php" class="btn btn-primary"> Voltar</a>
         </div>
 
 
