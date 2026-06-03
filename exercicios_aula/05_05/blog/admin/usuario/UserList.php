@@ -8,7 +8,9 @@ $db = new db('usuario');
 if (!empty($_GET['id'])) {
     $db->destroi($_GET['id']);
     $dados = $db->all(); //  estava assim  $dados = $db->search($_POST);, só que o método search espera um array com os campos para buscar, e o método all retorna todos os registros, então para exibir a lista atualizada após a exclusão, é necessário chamar o método all novamente para pegar todos os registros atualizados.
-}else{
+}if (!empty($_POST['valor'])) {
+    $dados = $db->search($_POST); //precisei adicionar pq se não interrompia a busca, agora se valor estiver vazio, ele exibe todos os registros, se tiver um valor, ele exibe os registros filtrados pelo método search
+    }else{
   $dados = $db->all();
 } 
 ?>
@@ -16,7 +18,7 @@ if (!empty($_GET['id'])) {
 <div class="row">
 
   <h3>Listagem de Usuário</h3>
-    <form action="./UserFormulario.php" method="post">
+    <form action="./UserList.php" method="post">
       <div class="row">
         <div class="col-6">
             <label for="nome">Tipo</label>
