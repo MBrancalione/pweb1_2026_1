@@ -41,7 +41,7 @@ if (!empty($_POST)) {
             $db->store($dado);
             $success = "Registro Salvo com sucesso!";
 
-            redirect('./UsuarioList.php');
+            redirect('../UsuarioList.php');
         }
     } catch (PDOException $e) {
         $actionError = $e->getMessage();
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
     <?php actionMessage($success, $actionError) ?>
     <?php showValidationError($errors) ?>
 
-    <form action=".registrar.php" method="post">
+    <form action="./registrar.php" method="post">
         <h3>Registar Usuário</h3>
         <input type="hidden" name="id" value="<?php echo isset($data->id) ? $data->id : ''; ?>"> 
         <div class="col-6">

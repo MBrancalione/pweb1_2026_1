@@ -115,6 +115,10 @@ class db
         }
     }
 
+    function redirect($url) {
+        header("Location: " . $url);
+    exit;
+}
 
     public function update($dados)
     {

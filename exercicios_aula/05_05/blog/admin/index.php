@@ -11,4 +11,4 @@ $dados = [
 ];
 
 $conn->store($dados);
-echo "Dados inseridos com sucesso!";
+echo "Você está no index caralho";
