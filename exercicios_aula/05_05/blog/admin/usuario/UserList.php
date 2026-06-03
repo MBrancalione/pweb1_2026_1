@@ -6,8 +6,8 @@ include_once "../database/db.class.php";
 $db = new db('usuario');
 
 if (!empty($_GET['id'])) {
-    $dados = $db->search($_POST);
     $db->destroi($_GET['id']);
+    $dados = $db->all(); //  estava assim  $dados = $db->search($_POST);, só que o método search espera um array com os campos para buscar, e o método all retorna todos os registros, então para exibir a lista atualizada após a exclusão, é necessário chamar o método all novamente para pegar todos os registros atualizados.
 }else{
   $dados = $db->all();
 } 
@@ -62,7 +62,6 @@ if (!empty($_GET['id'])) {
                 <td><a 
                     class='btn btn-warning' title='Editar'
                     href='./UserFormulario.php?id=$item->id'>Editar</a></td>   
-            </tr>
                 <td><a 
                     class='btn btn-danger' title='Deletar'
                     onclick='return confirm(\"Tem certeza que deseja deletar este usuário?\")'
