@@ -41,7 +41,7 @@ if (!empty($_POST)) {
             $db->store($dado);
             $success = "Registro Salvo com sucesso!";
 
-            redirect('../UsuarioList.php');
+            redirect('./usuario/UserList.php');
         }
     } catch (PDOException $e) {
         $actionError = $e->getMessage();
